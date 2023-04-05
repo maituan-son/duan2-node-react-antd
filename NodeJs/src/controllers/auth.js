@@ -66,7 +66,7 @@ export const signin = async (req, res) => {
     User.password = undefined;
 
     const token = jwt.sign({ _id: user._id }, process.env.SECRET_KEY, {
-      expiresIn: 60 * 60,
+      expiresIn: 600 * 600,
     });
     return res.json({
       message: "Đăng nhập thành công",

@@ -6,6 +6,7 @@ import type { ColumnsType } from 'antd/es/table';
 import { Button, message, Popconfirm } from 'antd';
 import { Link } from 'react-router-dom';
 import { ICategory } from '../../../types/category';
+import Icon, { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 
 
 type Props = {
@@ -73,7 +74,7 @@ const ListProducts = ({ products, onRemove, categories }: Props) => {
             key: 'action',
             render: (record) => (
                 <Space size="middle">
-                    <button className='btn btn-warning'><Link to={"/admin/products/" + record._id + "/update"}>Edit</Link></button>
+                    <button className='btn btn-warning'><Link to={"/admin/products/" + record._id + "/update"}><EditOutlined /></Link></button>
                     <Popconfirm
                         placement="top"
                         title={"Bạn có chắc chắn muốn xóa"}
@@ -82,7 +83,7 @@ const ListProducts = ({ products, onRemove, categories }: Props) => {
                         okText="Yes"
                         cancelText="No"
                     >
-                        <Button type='primary' danger>Xóa</Button>
+                        <Button type='primary' danger><DeleteOutlined /></Button>
                     </Popconfirm>
                 </Space>
             ),

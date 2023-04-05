@@ -30,11 +30,14 @@ const items1: MenuProps['items'] = [
       {
         key: `Signin`,
         label: (<a href='/signin'>Signin</a>),
-
       },
       {
         key: `Signup`,
         label: (<a href='/signup'>Signup</a>),
+      },
+      {
+        key: `logout`,
+        label: (<a href='#' onClick={() => localStorage.removeItem("accessToken")}>logout</a>),
       }
 
     ]

@@ -38,6 +38,7 @@ const UpdateProduct = ({ onUpdate, products, categories }: IProps) => {
     const onFill = () => {
         formRef.current?.setFieldsValue({ note: 'Hello world!', gender: 'male' });
     };
+
     const onGenderChange = (value: string) => {
         switch (value) {
             case 'male':

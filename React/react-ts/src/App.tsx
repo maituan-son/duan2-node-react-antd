@@ -73,7 +73,7 @@ function App() {
   }
   // ------------Đăng ký
   const onHandleSignup = (user: IUser) => {
-    signup(user).then(() => alert("Đăng ký thành công"));
+    signup(user).then(() => alert("Đăng ký thành công😍"));
   }
   // ================================= CATEGORY =========================================
   const [categories, setcategory] = useState<ICategory[]>([]);

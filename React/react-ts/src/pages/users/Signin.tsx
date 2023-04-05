@@ -2,13 +2,16 @@ import React from 'react'
 import { IUser } from '../../types/auth';
 import { LockOutlined, UserOutlined, MailOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {
     onSignin: (user: IUser) => void,
 }
 const Signin = ({ onSignin }: Props) => {
+    const navigate = useNavigate();
     const onFinish = (user: any) => {
         onSignin(user);
+        navigate("/")
     };
 
     const onFinishFailed = (errorInfo: any) => {
@@ -64,7 +67,7 @@ const Signin = ({ onSignin }: Props) => {
                     <Button type="primary" htmlType="submit" className="login-form-button">
                         Log in
                     </Button>
-                    Or <a href="">register now!</a>
+                    Or <a href="/signup">register now!</a>
                 </Form.Item>
             </Form>
         </div>
