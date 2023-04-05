@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button, Form, Input, Select } from 'antd';
 import type { FormInstance } from 'antd/es/form';
 import { ICategory } from '../../../types/category';
+const { TextArea } = Input;
 
 type Props = {
     categories: ICategory[],
@@ -89,12 +90,9 @@ const AddProduct = ({ onAdd, categories }: Props) => {
                     <Input />
                 </Form.Item>
 
-                <Form.Item
-                    label="Description"
-                    name="description"
-                    rules={[{ required: true, message: 'Please input description!' }]}
-                >
-                    <Input />
+                <Form.Item label="Description" name="description"
+                    rules={[{ required: true, message: 'Please input description!' }]}>
+                    <TextArea rows={4} />
                 </Form.Item>
 
                 <Form.Item
@@ -118,7 +116,7 @@ const AddProduct = ({ onAdd, categories }: Props) => {
 
                 </Form.Item>
             </Form>
-        </div>
+        </div >
     )
 }
 

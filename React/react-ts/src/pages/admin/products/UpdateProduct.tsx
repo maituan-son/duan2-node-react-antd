@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button, Form, Input, Select } from 'antd';
 import { ICategory } from '../../../types/category';
 import type { FormInstance } from 'antd/es/form';
+import TextArea from 'antd/es/input/TextArea';
 
 type IProps = {
     products: IProduct[],
@@ -13,13 +14,13 @@ type IProps = {
 }
 const UpdateProduct = ({ onUpdate, products, categories }: IProps) => {
     const { id } = useParams<{ id: string }>();
-    const [product, setProducts] = useState<IProduct | undefined>(undefined);
+    // const [product, setProducts] = useState<IProduct | undefined>(undefined);
     useEffect(() => {
         const concurren = products.find((pro) => pro._id === id);
-        console.log(concurren);
+        // console.log(concurren);
 
         if (concurren) {
-            setProducts(concurren);
+            // setProducts(concurren);
             formRef.current?.setFieldsValue(concurren);
         }
 
@@ -108,12 +109,9 @@ const UpdateProduct = ({ onUpdate, products, categories }: IProps) => {
                     <Input />
                 </Form.Item>
 
-                <Form.Item
-                    label="Description"
-                    name="description"
-                    rules={[{ required: true, message: 'Please input description!' }]}
-                >
-                    <Input />
+                <Form.Item label="Description" name="description"
+                    rules={[{ required: true, message: 'Please input description!' }]}>
+                    <TextArea rows={4} />
                 </Form.Item>
 
                 <Form.Item
