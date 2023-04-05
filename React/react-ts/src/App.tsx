@@ -60,9 +60,9 @@ function App() {
     // console.log(product);
 
     updateProduct(product)
-    // .then(() => {
-    //   setProducts(products.map((pro) => pro._id == product._id ? product : pro));
-    // }).catch(err => console.log(err))
+      .then(() => {
+        setProducts(products.map((pro) => pro._id == product._id ? product : pro));
+      }).catch(err => console.log(err))
   }
   // ===========================USER ========================================
   // -------------Đăng nhập

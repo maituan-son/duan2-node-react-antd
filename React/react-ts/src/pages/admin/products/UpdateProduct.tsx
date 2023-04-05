@@ -13,18 +13,28 @@ type IProps = {
 }
 const UpdateProduct = ({ onUpdate, products, categories }: IProps) => {
     const { id } = useParams<{ id: string }>();
-
+    const [product, setProducts] = useState<IProduct | undefined>(undefined);
     useEffect(() => {
-        const concurren = products.find((pro) => pro._id == String(id));
-        formRef.current?.setFieldsValue(concurren);
-    })
+        const concurren = products.find((pro) => pro._id === id);
+        console.log(concurren);
+
+        if (concurren) {
+            setProducts(concurren);
+            formRef.current?.setFieldsValue(concurren);
+        }
+
+    }, [id, products])
 
     const formRef = React.useRef<FormInstance>(null);
     const { Option } = Select;
     const navigate = useNavigate();
     const onFinish = (values: any) => {
-        onUpdate(values);
-        // navigate("/admin/products");
+        const productUpdate = {
+            ...values,
+            _id: id
+        }
+        onUpdate(productUpdate);
+        navigate("/admin/products");
     };
 
     const onFinishFailed = (errorInfo: any) => {
