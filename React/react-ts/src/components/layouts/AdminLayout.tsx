@@ -5,18 +5,52 @@ import type { MenuProps } from 'antd';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import { Outlet } from "react-router-dom";
 const { Header, Content, Footer, Sider } = Layout;
+import { AntDesignOutlined, } from '@ant-design/icons';
+import { Avatar, Divider, Tooltip } from 'antd';
 
-const items1: MenuProps['items'] = ['1', '2', '3'].map((key, index) => ({
-  key,
-  label: `nav ${index + 1}`,
-}));
+const items1: MenuProps['items'] = [
+  {
+    key: 'dashboard',
+    label: (<Avatar.Group>
+      <Avatar src="https://res.cloudinary.com/fashsion-brand/image/upload/v1677003861/portfolio/jqfcw2bdpy9vcg5mciyr.jpg" />
+    </Avatar.Group>),
+    children: [
+      {
+        key: `ListProduct`,
+        label: (<a href='#'>Thông tin</a>),
 
+      },
+      {
+        key: `ListProduct`,
+        label: (<a href='/'>Thoát</a>),
+
+      },
+    ]
+  }]
 
 const items2: MenuProps['items'] = [
   {
     key: 'dashboard',
+    label: (<Avatar.Group>
+      <Avatar src="https://res.cloudinary.com/fashsion-brand/image/upload/v1677003861/portfolio/jqfcw2bdpy9vcg5mciyr.jpg" />
+    </Avatar.Group>),
+    children: [
+      {
+        key: `animation`,
+        label: (<a href='#'>Thông tin</a>),
+
+      },
+      {
+        key: `logout`,
+        label: (<a href='/'>Thoát</a>),
+
+      },
+    ]
+  },
+  {
+    key: 'dashboard',
     icon: React.createElement(NotificationOutlined),
-    label: 'Dashboard',
+    label: (<a href='/admin'>Dashboard</a>),
   },
   {
     key: 'products',
@@ -25,12 +59,12 @@ const items2: MenuProps['items'] = [
     children: [
       {
         key: `ListProduct`,
-        label: `ListProducts`,
+        label: (<a href='/admin/products'>ListProduct</a>),
 
       },
       {
         key: `AddProduct`,
-        label: `AddProduct`,
+        label: (<a href='/admin/products/add'>AddProduct</a>),
       }
 
     ]
@@ -39,13 +73,18 @@ const items2: MenuProps['items'] = [
     key: 'category',
     icon: React.createElement(LaptopOutlined),
     label: 'Category',
-    children: new Array(4).fill(null).map((_, index) => {
-      const subKey = index + 1;
-      return {
-        key: `sub${subKey}`,
-        label: `Category ${subKey}`,
-      };
-    }),
+    children: [
+      {
+        key: `ListCategory`,
+        label: (<a href='/admin/categories'>ListCategory</a>),
+
+      },
+      {
+        key: `AddCategory`,
+        label: (<a href='/admin/categories/add'>AddCategory</a>),
+      }
+
+    ]
   },
 
 ];

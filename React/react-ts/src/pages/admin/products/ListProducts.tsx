@@ -5,15 +5,19 @@ import { Image, Space, Table, Tag } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import { Button, message, Popconfirm } from 'antd';
 import { Link } from 'react-router-dom';
+import { ICategory } from '../../../types/category';
 
 
 type Props = {
+    categories: ICategory[],
     products: IProduct[],
     onRemove: (_id: string) => void
 
 
 }
-const ListProducts = ({ products, onRemove }: Props) => {
+const ListProducts = ({ products, onRemove, categories }: Props) => {
+    console.log(categories);
+
     const onHandleRemove = (_id: string) => {
         onRemove(_id);
     }
@@ -55,9 +59,11 @@ const ListProducts = ({ products, onRemove }: Props) => {
             dataIndex: 'categoryId',
             key: 'categoryId',
             render: (record): any => {
-                console.log(record);
+                console.log(categories.find(cate => cate._id === record));
 
-                return record;
+                const catename = categories.find(cate => cate._id === record);
+                return catename?.name
+
             }
 
         },

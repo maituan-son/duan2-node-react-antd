@@ -14,7 +14,7 @@ export const signup = async (req, res) => {
         message: errors,
       });
     }
-    const { name, email, password, confirmPasword } = req.body;
+    const { username, email, password, confirmPasword } = req.body;
     const userExist = await User.findOne({ email });
 
     if (userExist) {
@@ -24,7 +24,7 @@ export const signup = async (req, res) => {
     }
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await User.create({
-      name,
+      username,
       email,
       password: hashedPassword,
     });

@@ -51,9 +51,9 @@ const AddProduct = ({ onAdd, categories }: Props) => {
             <h1 className='text-center'>Add new Products</h1>
             <Form
                 name="control-ref"
-                labelCol={{ span: 8 }}
-                wrapperCol={{ span: 16 }}
-                style={{ maxWidth: 600 }}
+                labelCol={{ span: 2 }}
+                wrapperCol={{ span: 30 }}
+                style={{ maxWidth: 900 }}
                 initialValues={{ remember: true }}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}

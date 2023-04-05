@@ -27,10 +27,19 @@ const Signin = ({ onSignin }: Props) => {
             >
                 <Form.Item
                     name="email"
-                    rules={[{ required: true, message: 'Please input your Email!' }]}
+                    rules={[{
+                        type: 'email',
+                        message: 'The input is not valid E-mail!',
+                    },
+                    {
+                        required: true,
+                        message: 'Please input your E-mail!',
+                    },]}
                 >
                     <Input prefix={<MailOutlined className="site-form-item-icon" />} type='email' placeholder="Email" />
                 </Form.Item>
+
+
                 <Form.Item
                     name="password"
                     rules={[{ required: true, message: 'Please input your Password!' }]}

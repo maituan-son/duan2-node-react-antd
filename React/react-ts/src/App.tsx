@@ -119,7 +119,7 @@ function App() {
         <Route path='admin' element={<AdminLayout />} >
           <Route index element={<Dashboard />} />
           <Route path='products' >
-            <Route index element={<ListProducts products={products} onRemove={onHanleRemove} />} />
+            <Route index element={<ListProducts products={products} categories={categories} onRemove={onHanleRemove} />} />
             <Route path='add' element={<AddProduct onAdd={onHanleAdd} categories={categories} />} />
             <Route path=':id/update' element={<UpdateProduct products={products} categories={categories} onUpdate={onHanleUpdate} />} />
           </Route>
