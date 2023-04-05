@@ -1,44 +1,61 @@
-import React from 'react'
 import { ICategory } from '../../../types/category'
-
+import { Button, Image, message, Popconfirm } from 'antd';
+import { Space, Table, Tag } from 'antd';
+import type { ColumnsType } from 'antd/es/table';
+import { Link } from 'react-router-dom';
+import { IProduct } from '../../../types/products';
+import { useEffect, useState } from 'react';
 type Props = {
     categories: ICategory[],
+    products: IProduct[],
     onRemove: (_id: string) => void
 }
 
-const ListCategory = ({ categories, onRemove }: Props) => {
-    const onHandleRemove = (_id: string) => {
+
+
+const ListCategory = ({ categories, products, onRemove }: Props) => {
+    const HandleDelete = (_id: string) => {
         onRemove(_id);
     }
+    const columns: ColumnsType<ICategory> = [
+        {
+            title: 'Name',
+            dataIndex: 'name',
+            key: 'name',
+        },
+        {
+            title: 'Image',
+            dataIndex: 'image',
+            key: 'image',
+            render: (record): any => {
+                return < Image width={200} src={record} />
+            }
+        },
+
+        {
+            title: 'Action',
+            key: 'action',
+            render: (record) => (
+                <Space size="middle">
+                    <button className='btn btn-warning'><Link to={"/admin/categories/" + record._id + "/update"}>Sửa</Link></button>
+                    <Popconfirm
+                        placement="top"
+                        title={"Bạn có chắc chắn xóa"}
+                        description={"Xóa rồi là mất"}
+                        onConfirm={() => HandleDelete(record._id)}
+                        okText="Yes"
+                        cancelText="No"
+                    >
+                        <Button type='primary' danger>Xóa</Button>
+                    </Popconfirm>
+                </Space >
+            ),
+        },
+    ];
+
     return (
         <div>
-            <div>
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Id</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Image</th>
-                            <th scope="col">Active</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {categories.map((cate, index) => {
-                            return (
-                                <tr key={index}>
-                                    <th scope="row">{index + 1}</th>
-                                    <td>{cate.name}</td>
-                                    <td><img src={cate.image} alt="" width={100} /></td>
-                                    <td>
-                                        <button className='btn btn-danger' onClick={() => onHandleRemove(cate._id)}><i className="fa-solid fa-trash"></i></button>
-                                        <a className='btn btn-warning' href={"/admin/categories/" + cate._id + "/update"}><i className="fa-solid fa-pen-to-square"></i></a>
-                                    </td>
-                                </tr>
-                            )
-                        })}
-                    </tbody>
-                </table>
-            </div>
+            <Table columns={columns} dataSource={categories} />;
         </div>
     )
 }

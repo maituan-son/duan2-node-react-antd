@@ -124,9 +124,9 @@ function App() {
             <Route path=':id/update' element={<UpdateProduct products={products} categories={categories} onUpdate={onHanleUpdate} />} />
           </Route>
           <Route path='categories' >
-            <Route index element={<ListCategory categories={categories} onRemove={onHanleRemoveCate} />} />
-            <Route path='add' element={<AddCategory onAdd={onHanleAddCate} />} />
-            <Route path=':id/update' element={<UpdateCategory categories={categories} onUpdate={onHanleUpdateCate} />} />
+            <Route index element={<ListCategory categories={categories} products={products} onRemove={onHanleRemoveCate} />} />
+            <Route path='add' element={<AddCategory onAdd={onHanleAddCate} products={products} />} />
+            <Route path=':id/update' element={<UpdateCategory categories={categories} products={products} onUpdate={onHanleUpdateCate} />} />
           </Route>
         </Route>
       </Routes>
