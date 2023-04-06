@@ -3,21 +3,25 @@ import slideshow from '../components/views/slideshow/slideshow'
 import Footer from '../components/views/Footer'
 import { IProduct } from '../types/products'
 import { ICategory } from '../types/category'
+import { Col, Divider, Row } from 'antd';
+
 
 type Props = {
     products: IProduct[],
-    categories: ICategory[],
 }
 
-const HomePage = ({ products, categories }: Props) => {
+const HomePage = ({ products }: Props) => {
+    const style: React.CSSProperties = { background: '', padding: '8px 0' };
     return (
         <div>
+            {/* SLIDE SHOW */}
             {slideshow()}
-            <div className="container mt-5">
-                <div className="row">
-                    {products.map((pro, index) => {
-                        return (
-                            <div key={index} className="col-sm-3 shadow-hover">
+
+            <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32, }}>
+                {products.map((pro, index) => {
+                    return (
+                        <Col key={index} span={6}>
+                            <div style={style} className="gutter-row  shadow-hover">
                                 <div className='text-center'>
                                     <a href={"/products/" + pro._id}><img src={pro.image} alt="" /></a>
                                 </div>
@@ -27,11 +31,10 @@ const HomePage = ({ products, categories }: Props) => {
                                     <button className='btn btn-danger w-100 mt-2'><a className='link-underline link-underline-opacity-0 text-light' href={"/products/" + pro._id}>Xem thêm</a></button>
                                 </div>
                             </div>
-                        )
-                    })}
-
-                </div>
-            </div>
+                        </Col>
+                    )
+                })}
+            </Row>
         </div>
     )
 }

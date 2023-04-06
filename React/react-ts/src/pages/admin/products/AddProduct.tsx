@@ -60,6 +60,7 @@ const AddProduct = ({ onAdd, categories }: Props) => {
                 onFinishFailed={onFinishFailed}
                 autoComplete="off"
                 ref={formRef}
+
             >
                 <Form.Item name="categoryId" label="CategoryId" rules={[{ required: true }]}>
                     <Select

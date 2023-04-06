@@ -7,43 +7,6 @@ import Icon, { HomeOutlined, UserAddOutlined, AppleOutlined } from '@ant-design/
 
 const { Header, Content, Sider, Footer } = Layout;
 
-// const items1: MenuProps['items'] = [
-//   {
-//     key: 'dashboard',
-//     label: (<a href='/admin'><AppleOutlined /></a>),
-//   },
-//   {
-//     key: 'home',
-//     icon: <HomeOutlined />,
-//     label: (<a href='/'>Trang chủ</a>),
-//   },
-//   {
-//     key: 'products',
-//     icon: React.createElement(NotificationOutlined),
-//     label: (<a href='/products'>Sản phẩm</a>),
-//   },
-//   {
-//     key: 'User',
-//     icon: <UserAddOutlined />,
-//     label: (<a href='#'>User</a>),
-//     children: [
-//       {
-//         key: `Signin`,
-//         label: (<a href='/signin'>Signin</a>),
-//       },
-//       {
-//         key: `Signup`,
-//         label: (<a href='/signup'>Signup</a>),
-//       },
-//       {
-//         key: `logout`,
-//         label: (<a href='#' onClick={() => localStorage.removeItem("accessToken")}>logout</a>),
-//       }
-
-//     ]
-//   },
-// ]
-
 const itemsWhenLoggedIn: MenuProps['items'] = [
   {
     key: 'dashboard',
@@ -66,7 +29,11 @@ const itemsWhenLoggedIn: MenuProps['items'] = [
     children: [
       {
         key: `logout`,
-        label: (<a href='#' onClick={() => localStorage.removeItem("accessToken")}>logout</a>),
+        label: (<a href='/' onClick={() => localStorage.removeItem("accessToken")}>logout</a>),
+      },
+      {
+        key: `dashboard`,
+        label: (<a href='/admin'>Trang quản trị</a>),
       }
 
     ]
@@ -106,7 +73,6 @@ const itemsWhenNotLoggedIn: MenuProps['items'] = [
 ]
 
 const isLoggedIn = localStorage.getItem("accessToken") !== null;
-
 
 
 const BaseLayout = () => {

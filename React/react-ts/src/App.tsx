@@ -21,6 +21,7 @@ import ListCategory from './pages/admin/categories/ListCategory'
 import AddCategory from './pages/admin/categories/AddCategory'
 import UpdateCategory from './pages/admin/categories/UpdateCategory'
 import { ICategory } from './types/category'
+import { useNavigate } from 'react-router-dom';
 
 function App() {
   //======================== PRODUCTS ========================================
@@ -70,6 +71,7 @@ function App() {
     const { data } = await signin(user);
     localStorage.setItem("accessToken", JSON.stringify(data.accessToken));
     alert("Đăng nhập thành công");
+
   }
   // ------------Đăng ký
   const onHandleSignup = (user: IUser) => {
@@ -109,10 +111,10 @@ function App() {
     )
   }
   return (
-    <div className="App container">
+    <div className="App">
       <Routes>
         <Route path='/' element={< BaseLayout />} >
-          <Route index element={<HomePage products={products} categories={categories} />} />
+          <Route index element={<HomePage products={products} />} />
           <Route path='products' >
             <Route index element={<ProductPage products={products} categories={categories} />} />
             <Route path=':id' element={<ProductDetail products={products} />} />

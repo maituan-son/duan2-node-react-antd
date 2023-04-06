@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from "react-router-dom";
 import { IProduct } from '../types/products';
-import { getOneProduct } from '../api/product';
 type Props = {
     products: IProduct[]
 }
