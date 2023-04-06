@@ -1,5 +1,6 @@
 import Product from "../models/products";
 import productSchema from "../schemas/products";
+import Category from "../models/categories";
 
 export const getAll = async (req, res) => {
   try {
@@ -15,7 +16,7 @@ export const getAll = async (req, res) => {
     });
   } catch (error) {
     return res.status(400).json({
-      message: error,
+      message: error.message,
     });
   }
 };
@@ -37,13 +38,14 @@ export const get = async (req, res) => {
     });
   } catch (error) {
     return res.status(400).json({
-      message: error,
+      message: error.message,
     });
   }
 };
 
 export const create = async (req, res) => {
   try {
+    // validate
     const { error } = productSchema.validate(req.body);
     if (error) {
       const errors = error.details.map((err) => err.message);
@@ -51,19 +53,22 @@ export const create = async (req, res) => {
         message: errors,
       });
     }
-    const products = await Product.create(req.body);
-    if (!products) {
+    const product = await Product.create(req.body);
+    await Category.findByIdAndUpdate(product.categoryId, {
+      $addToSet: { products: product._id },
+    });
+    if (!product) {
       return res.status(400).json({
         message: "không tìm thấy sản phẩm",
       });
     }
     return res.json({
       message: "Thêm sản phẩm thành công",
-      products,
+      product,
     });
   } catch (error) {
     return res.status(400).json({
-      message: error,
+      message: error.message,
     });
   }
 };
@@ -91,7 +96,7 @@ export const update = async (req, res) => {
     });
   } catch (error) {
     return res.status(400).json({
-      message: error,
+      message: error.message,
     });
   }
 };
@@ -110,7 +115,7 @@ export const remove = async (req, res) => {
     });
   } catch (error) {
     return res.status(400).json({
-      message: error,
+      message: error.message,
     });
   }
 };

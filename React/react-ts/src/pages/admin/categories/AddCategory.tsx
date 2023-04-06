@@ -1,4 +1,3 @@
-import { useForm } from 'react-hook-form'
 import { ICategory } from '../../../types/category'
 import { useNavigate } from 'react-router-dom'
 import { Button, Form, Input, Select } from 'antd';
@@ -23,20 +22,20 @@ const AddCategory = ({ onAdd, products }: Props) => {
     };
     const [form] = Form.useForm();
 
-    const onGenderChange = (value: string) => {
-        switch (value) {
-            case 'male':
-                form.setFieldsValue({ note: 'Hi, man!' });
-                break;
-            case 'female':
-                form.setFieldsValue({ note: 'Hi, lady!' });
-                break;
-            case 'other':
-                form.setFieldsValue({ note: 'Hi there!' });
-                break;
-            default:
-        }
-    };
+    // const onGenderChange = (value: string) => {
+    //     switch (value) {
+    //         case 'male':
+    //             form.setFieldsValue({ note: 'Hi, man!' });
+    //             break;
+    //         case 'female':
+    //             form.setFieldsValue({ note: 'Hi, lady!' });
+    //             break;
+    //         case 'other':
+    //             form.setFieldsValue({ note: 'Hi there!' });
+    //             break;
+    //         default:
+    //     }
+    // };
 
     return (
         <div>
@@ -51,7 +50,7 @@ const AddCategory = ({ onAdd, products }: Props) => {
                 onFinishFailed={onFinishFailed}
                 autoComplete="off"
             >
-                <Form.Item name="products" label="Products" rules={[{ required: true }]}>
+                {/* <Form.Item name="products" label="Products" rules={[{ required: true }]}>
                     <Select
                         placeholder="Select a option and change input text above"
                         onChange={onGenderChange}
@@ -63,7 +62,7 @@ const AddCategory = ({ onAdd, products }: Props) => {
                             )
                         })}
                     </Select>
-                </Form.Item>
+                </Form.Item> */}
                 <Form.Item
                     label="Category name"
                     name="name"

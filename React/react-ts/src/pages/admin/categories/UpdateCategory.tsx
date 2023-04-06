@@ -40,20 +40,20 @@ const UpdateCategory = ({ categories, onUpdate, products }: Props) => {
     };
 
 
-    const onGenderChange = (value: string) => {
-        switch (value) {
-            case 'male':
-                form.setFieldsValue({ note: 'Hi, man!' });
-                break;
-            case 'female':
-                form.setFieldsValue({ note: 'Hi, lady!' });
-                break;
-            case 'other':
-                form.setFieldsValue({ note: 'Hi there!' });
-                break;
-            default:
-        }
-    };
+    // const onGenderChange = (value: string) => {
+    //     switch (value) {
+    //         case 'male':
+    //             form.setFieldsValue({ note: 'Hi, man!' });
+    //             break;
+    //         case 'female':
+    //             form.setFieldsValue({ note: 'Hi, lady!' });
+    //             break;
+    //         case 'other':
+    //             form.setFieldsValue({ note: 'Hi there!' });
+    //             break;
+    //         default:
+    //     }
+    // };
     return (
         <div>
             <h1 className='text-center'>Update Category</h1>
@@ -68,7 +68,7 @@ const UpdateCategory = ({ categories, onUpdate, products }: Props) => {
                 autoComplete="off"
                 ref={formRef}
             >
-                <Form.Item name="products" label="Products" rules={[{ required: true }]}>
+                {/* <Form.Item name="products" label="Products" rules={[{ required: true }]}>
                     <Select
                         placeholder="Select a option and change input text above"
                         onChange={onGenderChange}
@@ -80,7 +80,7 @@ const UpdateCategory = ({ categories, onUpdate, products }: Props) => {
                             )
                         })}
                     </Select>
-                </Form.Item>
+                </Form.Item> */}
                 <Form.Item
                     label="Category name"
                     name="name"
