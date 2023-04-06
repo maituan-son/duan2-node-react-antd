@@ -14,7 +14,7 @@ const AddCategory = ({ onAdd, products }: Props) => {
 
     const onFinish = (data: any) => {
         onAdd(data);
-        navigate("/admin/categories")
+        // navigate("/admin/categories")
     };
 
     const onFinishFailed = (errorInfo: any) => {

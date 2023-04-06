@@ -82,17 +82,20 @@ export const update = async (req, res) => {
         message: errors,
       });
     }
-    const products = await Product.findByIdAndUpdate(req.params.id, req.body, {
+    const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
-    if (!products) {
+    await Category.findByIdAndUpdate(product.categoryId, {
+      $addToSet: { products: product._id },
+    });
+    if (!product) {
       return res.status(400).json({
         message: "không tìm thấy sản phẩm",
       });
     }
     return res.json({
       message: "Cập nhật sản phẩm thành công",
-      products,
+      product,
     });
   } catch (error) {
     return res.status(400).json({

@@ -91,12 +91,18 @@ function App() {
   }
   // -----------Thêm
   const onHanleAddCate = (category: ICategory) => {
+    console.log(categories);
+
+    console.log(category);
+
     CreateCategory(category).then(() => {
       setcategory([...categories, category]);
     });
   }
   // -----------Cập nhật
   const onHanleUpdateCate = (category: ICategory) => {
+    console.log(category);
+
     updateCategory(category).then(() => {
       setcategory(categories.map((cate) => cate._id == category._id ? category : cate))
     }).catch((error) => console.log(error)

@@ -20,8 +20,7 @@ const UpdateCategory = ({ categories, onUpdate, products }: Props) => {
 
     useEffect(() => {
         const concurren = categories.find((cate) => cate._id === id);
-        console.log(concurren);
-
+        // console.log(concurren);
         if (concurren) {
             formRef.current?.setFieldsValue(concurren);
         }
@@ -31,7 +30,11 @@ const UpdateCategory = ({ categories, onUpdate, products }: Props) => {
     const [form] = Form.useForm();
 
     const onFinish = (data: any) => {
-        onUpdate(data);
+        const newupdate = {
+            _id: id,
+            ...data,
+        }
+        onUpdate(newupdate);
         navigate("/admin/categories")
     };
 
