@@ -23,9 +23,9 @@ const Signup = ({ onSignup }: Props) => {
             <h1 className='text-center'>Signup</h1>
             <Form
                 name="register"
-                labelCol={{ span: 8 }}
+                labelCol={{ span: 4 }}
                 wrapperCol={{ span: 16 }}
-                style={{ maxWidth: 600 }}
+                style={{ maxWidth: 1000, margin: "0 auto" }}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
                 autoComplete="off"
@@ -63,6 +63,10 @@ const Signup = ({ onSignup }: Props) => {
                         {
                             required: true,
                             message: 'Please input your password!',
+                        },
+                        {
+                            min: 6,
+                            message: 'Password cần lớn hơn 6 ký tự',
                         },
                     ]}
                     hasFeedback

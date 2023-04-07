@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import slideshow from '../components/views/slideshow/slideshow'
 import Footer from '../components/views/Footer'
 import { IProduct } from '../types/products'
 import { ICategory } from '../types/category'
 import { Col, Divider, Row } from 'antd';
+import SearchForm from '../components/views/Search'
+import { AudioOutlined } from '@ant-design/icons';
+import { Input, Space } from 'antd';
+
 
 
 type Props = {
@@ -12,11 +16,30 @@ type Props = {
 
 const HomePage = ({ products }: Props) => {
     const style: React.CSSProperties = { background: '', padding: '8px 0' };
+    const { Search } = Input;
+
+    const onSearch = (value: string) => console.log(value);
+
+    const suffix = (
+        <AudioOutlined
+            style={{
+                fontSize: 16,
+                color: '#1890ff',
+            }}
+        />
+    );
+
     return (
         <div>
             {/* SLIDE SHOW */}
             {slideshow()}
-
+            <Search
+                placeholder="input search text"
+                enterButton="Search"
+                size="large"
+                suffix={suffix}
+                onSearch={onSearch}
+            />
             <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32, }}>
                 {products.map((pro, index) => {
                     return (

@@ -37,6 +37,7 @@ const Signin = ({ onSignin }: Props) => {
                     {
                         required: true,
                         message: 'Please input your E-mail!',
+
                     },]}
                 >
                     <Input prefix={<MailOutlined className="site-form-item-icon" />} type='email' placeholder="Email" />
@@ -45,7 +46,17 @@ const Signin = ({ onSignin }: Props) => {
 
                 <Form.Item
                     name="password"
-                    rules={[{ required: true, message: 'Please input your Password!' }]}
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Please input your Password!',
+
+                        },
+                        {
+                            min: 6,
+                            message: 'Vui lòng nhập lớn hơn 6 ký tự!',
+                        },
+                    ]}
                 >
                     <Input
                         prefix={<LockOutlined className="site-form-item-icon" />}

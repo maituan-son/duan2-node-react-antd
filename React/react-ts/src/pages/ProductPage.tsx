@@ -3,6 +3,7 @@ import slideshowproduct from '../components/views/slideshow/slideshow-product'
 import { IProduct } from '../types/products'
 import { ICategory } from '../types/category'
 import { Col, Divider, Row } from 'antd';
+import SearchForm from '../components/views/Search';
 
 type Props = {
     products: IProduct[],
@@ -14,6 +15,7 @@ const ProductPage = ({ products, categories }: Props) => {
     return (
         <div>
             {slideshowproduct()}
+            {SearchForm()}
             <div className="container mt-3">
                 <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32, }}>
                     {categories.map((cate, index) => {
