@@ -1,3 +1,4 @@
+// components
 import React from 'react'
 import { IProduct } from '../../../types/products';
 import { useNavigate } from 'react-router-dom';
@@ -6,16 +7,20 @@ import type { FormInstance } from 'antd/es/form';
 import { ICategory } from '../../../types/category';
 const { TextArea } = Input;
 
+// định nghĩa kiểu dữ liệu
 type Props = {
     categories: ICategory[],
     onAdd: (product: IProduct) => void;
 }
 
 const AddProduct = ({ onAdd, categories }: Props) => {
-
+    // antd
     const formRef = React.useRef<FormInstance>(null);
     const { Option } = Select;
+
+    // sử dụng hàm để chuyển hướng
     const navigate = useNavigate();
+
     const onFinish = (values: any) => {
         onAdd(values);
         navigate("/admin/products");
@@ -32,16 +37,12 @@ const AddProduct = ({ onAdd, categories }: Props) => {
     const onFill = () => {
         formRef.current?.setFieldsValue({ note: 'Hello world!', gender: 'male' });
     };
+
+    // ko cần để ý
     const onGenderChange = (value: string) => {
         switch (value) {
             case 'male':
                 formRef.current?.setFieldsValue({ note: 'Hi, man!' });
-                break;
-            case 'female':
-                formRef.current?.setFieldsValue({ note: 'Hi, lady!' });
-                break;
-            case 'other':
-                formRef.current?.setFieldsValue({ note: 'Hi there!' });
                 break;
             default:
                 break;
@@ -58,7 +59,7 @@ const AddProduct = ({ onAdd, categories }: Props) => {
                 initialValues={{ remember: true }}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
-                autoComplete="off"
+                autoComplete="on"
                 ref={formRef}
 
             >
@@ -80,7 +81,7 @@ const AddProduct = ({ onAdd, categories }: Props) => {
                     name="name"
                     rules={[{ required: true, message: 'Please input your name products!' }]}
                 >
-                    <Input />
+                    <Input autoComplete="name" />
                 </Form.Item>
 
                 <Form.Item
@@ -88,7 +89,7 @@ const AddProduct = ({ onAdd, categories }: Props) => {
                     name="price"
                     rules={[{ required: true, message: 'Please input price!' }]}
                 >
-                    <Input />
+                    <Input autoComplete="price" />
                 </Form.Item>
 
                 <Form.Item label="Description" name="description"
@@ -101,7 +102,7 @@ const AddProduct = ({ onAdd, categories }: Props) => {
                     name="image"
                     rules={[{ required: true, message: 'Please input image!' }]}
                 >
-                    <Input />
+                    <Input autoComplete="image" />
                 </Form.Item>
 
                 <Form.Item wrapperCol={{ offset: 8, span: 16 }}>

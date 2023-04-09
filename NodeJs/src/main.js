@@ -15,6 +15,10 @@ app.use(cors());
 app.use("/api", productRouter);
 app.use("/api", authtRouter);
 app.use("/api", categoryRouter);
+app.get("/search", (req, res) => {
+  console.log(req.query.q);
+  res.render("seacrh");
+});
 
 // connect
 mongoose

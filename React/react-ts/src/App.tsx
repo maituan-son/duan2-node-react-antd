@@ -8,9 +8,9 @@ import Dashboard from './pages/admin/Dashboard'
 import ListProducts from './pages/admin/products/ListProducts'
 import UpdateProduct from './pages/admin/products/UpdateProduct'
 // import './App.css'
-import HomePage from './pages/HomePage'
-import ProductDetail from './pages/ProductDetail'
-import ProductPage from './pages/ProductPage'
+import HomePage from './pages/clients/HomePage'
+import ProductDetail from './pages/clients/ProductDetail'
+import ProductPage from './pages/clients/ProductPage'
 import { IProduct } from './types/products'
 import Signin from './pages/users/Signin'
 import Signup from './pages/users/Signup'
@@ -24,23 +24,31 @@ import { ICategory } from './types/category'
 import { useNavigate } from 'react-router-dom';
 
 function App() {
-  //======================== PRODUCTS ========================================
+
   // -Khai báo state là products và hàm cập nhật là setProducts với giá trị khởi tạo là 1 mảng rỗng
   const [products, setProducts] = useState<IProduct[]>([]);
-  // Hàm uffect đc sử dụng để gọi hàm getAllProduct lấy dữ liệu sản phẩm thông qua getAll rồi lưu giá trị vào state
+  const [keywords, setKeywords] = useState<string>("");
+  const [categories, setcategory] = useState<ICategory[]>([]);
+
+  //======================== PRODUCTS ========================================
+  //  Lấy tất cả dữ liệu sản phẩm
   useEffect(() => {
     (async () => {
-      const { data } = await getAllProduct();
-
-      const newData = data.products.map((product: any) => {
-        return {
-          key: product._id,
-          ...product,
-        }
-      });
-      setProducts(newData);
+      try {
+        const { data } = await getAllProduct(keywords);
+        // const newData = data.productResponse.map((product: any) => {
+        //   return {
+        //     key: product._id,
+        //     ...product,
+        //   }
+        // });
+        // console.log(newData);
+        setProducts(data.productResponse.docs);
+      } catch (error) {
+        console.log(error);
+      }
     })()
-  }, [])
+  }, [keywords])
 
   //---------- Xóa
   const onHanleRemove = (_id: string) => {
@@ -49,6 +57,7 @@ function App() {
       setProducts(newpro);
     })
   }
+
   // -----------Thêm
   const onHanleAdd = (product: IProduct) => {
     addProduct(product)
@@ -56,20 +65,21 @@ function App() {
         setProducts([...products, product]);
       })
   }
+
   //------------Cập nhật
   const onHanleUpdate = (product: IProduct) => {
-    // console.log(product);
-
     updateProduct(product)
       .then(() => {
         setProducts(products.map((pro) => pro._id == product._id ? product : pro));
       }).catch(err => console.log(err))
   }
+
   // ===========================USER ========================================
   // -------------Đăng nhập
   const onHandleSignin = async (user: IUser) => {
     const { data } = await signin(user);
     localStorage.setItem("accessToken", JSON.stringify(data.accessToken));
+    localStorage.setItem("user", JSON.stringify(data.user));
     alert("Đăng nhập thành công");
 
   }
@@ -78,10 +88,15 @@ function App() {
     signup(user).then(() => alert("Đăng ký thành công😍"));
   }
   // ================================= CATEGORY =========================================
-  const [categories, setcategory] = useState<ICategory[]>([]);
+
+  // Lấy tất cả danh sách danh mục
   useEffect(() => {
-    getAllCategory().then(({ data }) => setcategory(data.categories));
-  }, [])
+    (async () => {
+      const { data } = await getAllCategory(keywords);
+      setcategory(data.categoryResponse.docs)
+    })()
+
+  }, [keywords])
 
   //---------- Xóa
   const onHanleRemoveCate = (_id: string) => {
@@ -93,9 +108,6 @@ function App() {
   }
   // -----------Thêm
   const onHanleAddCate = (category: ICategory) => {
-    console.log(categories);
-
-    console.log(category);
 
     CreateCategory(category).then(() => {
       setcategory([...categories, category]);
@@ -103,8 +115,6 @@ function App() {
   }
   // -----------Cập nhật
   const onHanleUpdateCate = (category: ICategory) => {
-    console.log(category);
-
     updateCategory(category).then(() => {
       setcategory(categories.map((cate) => cate._id == category._id ? category : cate))
     }).catch((error) => console.log(error)
@@ -126,12 +136,12 @@ function App() {
         <Route path='admin' element={<AdminLayout />} >
           <Route index element={<Dashboard />} />
           <Route path='products' >
-            <Route index element={<ListProducts products={products} categories={categories} onRemove={onHanleRemove} />} />
+            <Route index element={<ListProducts products={products} onKeyWords={setKeywords} categories={categories} onRemove={onHanleRemove} />} />
             <Route path='add' element={<AddProduct onAdd={onHanleAdd} categories={categories} />} />
             <Route path=':id/update' element={<UpdateProduct products={products} categories={categories} onUpdate={onHanleUpdate} />} />
           </Route>
           <Route path='categories' >
-            <Route index element={<ListCategory categories={categories} products={products} onRemove={onHanleRemoveCate} />} />
+            <Route index element={<ListCategory onKeyWords={setKeywords} categories={categories} products={products} onRemove={onHanleRemoveCate} />} />
             <Route path='add' element={<AddCategory onAdd={onHanleAddCate} products={products} />} />
             <Route path=':id/update' element={<UpdateCategory categories={categories} products={products} onUpdate={onHanleUpdateCate} />} />
           </Route>

@@ -1,3 +1,4 @@
+// components
 import React, { useEffect } from 'react'
 import { ICategory } from '../../../types/category'
 import { useParams, useNavigate } from 'react-router-dom'
@@ -5,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { Button, Form, Input, Select } from 'antd';
 import { IProduct } from '../../../types/products';
 import type { FormInstance } from 'antd/es/form';
-const { Option } = Select;
+
 
 
 type Props = {
@@ -15,7 +16,15 @@ type Props = {
 }
 
 const UpdateCategory = ({ categories, onUpdate, products }: Props) => {
+    // antd
+    const { Option } = Select;
+    const formRef = React.useRef<FormInstance>(null);
+    const [form] = Form.useForm();
 
+    // chuyển hướng
+    const navigate = useNavigate();
+
+    //lấy ra id
     const { id } = useParams<{ id: string }>();
 
     useEffect(() => {
@@ -25,9 +34,6 @@ const UpdateCategory = ({ categories, onUpdate, products }: Props) => {
             formRef.current?.setFieldsValue(concurren);
         }
     }, [categories])
-    const formRef = React.useRef<FormInstance>(null);
-    const navigate = useNavigate();
-    const [form] = Form.useForm();
 
     const onFinish = (data: any) => {
         const newupdate = {
@@ -48,9 +54,6 @@ const UpdateCategory = ({ categories, onUpdate, products }: Props) => {
     //         case 'male':
     //             form.setFieldsValue({ note: 'Hi, man!' });
     //             break;
-    //         case 'female':
-    //             form.setFieldsValue({ note: 'Hi, lady!' });
-    //             break;
     //         case 'other':
     //             form.setFieldsValue({ note: 'Hi there!' });
     //             break;
@@ -68,7 +71,7 @@ const UpdateCategory = ({ categories, onUpdate, products }: Props) => {
                 initialValues={{ remember: true }}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
-                autoComplete="off"
+                autoComplete="on"
                 ref={formRef}
             >
                 {/* <Form.Item name="products" label="Products" rules={[{ required: true }]}>
@@ -89,7 +92,7 @@ const UpdateCategory = ({ categories, onUpdate, products }: Props) => {
                     name="name"
                     rules={[{ required: true, message: 'Please input your Category name!' }]}
                 >
-                    <Input />
+                    <Input autoComplete="name" />
                 </Form.Item>
 
                 <Form.Item
@@ -97,7 +100,7 @@ const UpdateCategory = ({ categories, onUpdate, products }: Props) => {
                     name="image"
                     rules={[{ required: true, message: 'Please input your Image!' }]}
                 >
-                    <Input />
+                    <Input autoComplete="image" />
                 </Form.Item>
 
                 <Form.Item wrapperCol={{ offset: 8, span: 16 }}>

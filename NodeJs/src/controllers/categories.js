@@ -3,16 +3,27 @@ import categorySchema from "../schemas/categories";
 import Product from "../models/products";
 
 export const getAll = async (req, res) => {
+  const { _keywords } = req.query;
   try {
-    const categories = await Category.find({});
-    if (!categories) {
+    const searchData = (categories) => {
+      return categories?.docs?.filter((item) =>
+        item.name.toLowerCase().includes(_keywords)
+      );
+    };
+
+    const categories = await Category.paginate({});
+    console.log("category", categories);
+    if (categories.length === 0 || categories.docs.length === 0) {
       return res.status(400).json({
         message: "không tìm thấy danh mục",
       });
     }
+    const searchDataCategory = await searchData(categories);
+    const categoryResponse = await { ...categories, docs: searchDataCategory };
+
     return res.json({
       message: "Lấy danh mục thành công",
-      categories,
+      categoryResponse,
     });
   } catch (error) {
     return res.status(400).json({

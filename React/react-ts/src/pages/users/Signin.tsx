@@ -25,8 +25,10 @@ const Signin = ({ onSignin }: Props) => {
                 className="login-form"
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
-                autoComplete="off"
+                autoComplete="on"
+                initialValues={{ remember: true }}
                 style={{ maxWidth: 700, margin: "0 auto" }}
+
             >
                 <Form.Item
                     name="email"
@@ -40,7 +42,7 @@ const Signin = ({ onSignin }: Props) => {
 
                     },]}
                 >
-                    <Input prefix={<MailOutlined className="site-form-item-icon" />} type='email' placeholder="Email" />
+                    <Input prefix={<MailOutlined className="site-form-item-icon" />} type='email' placeholder="Email" autoComplete="email" />
                 </Form.Item>
 
 

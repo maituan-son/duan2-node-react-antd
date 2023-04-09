@@ -28,7 +28,7 @@ const Signup = ({ onSignup }: Props) => {
                 style={{ maxWidth: 1000, margin: "0 auto" }}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
-                autoComplete="off"
+                autoComplete="on"
                 form={form}
                 initialValues={{ residence: ['zhejiang', 'hangzhou', 'xihu'], prefix: '86' }}
             >
@@ -37,7 +37,7 @@ const Signup = ({ onSignup }: Props) => {
                     name="username"
                     rules={[{ required: true, message: 'Please input your username!' }]}
                 >
-                    <Input />
+                    <Input autoComplete="username" />
                 </Form.Item>
                 <Form.Item
                     name="email"
@@ -53,7 +53,7 @@ const Signup = ({ onSignup }: Props) => {
                         },
                     ]}
                 >
-                    <Input />
+                    <Input autoComplete="email" />
                 </Form.Item>
 
                 <Form.Item

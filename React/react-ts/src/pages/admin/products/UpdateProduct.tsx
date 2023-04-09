@@ -1,3 +1,5 @@
+
+// conponents
 import React, { useEffect, useState } from 'react'
 import { IProduct } from '../../../types/products'
 import { useParams } from "react-router-dom";
@@ -7,28 +9,28 @@ import { ICategory } from '../../../types/category';
 import type { FormInstance } from 'antd/es/form';
 import TextArea from 'antd/es/input/TextArea';
 
+// định nghĩa kiểu dữ liệu
 type IProps = {
     products: IProduct[],
     categories: ICategory[],
     onUpdate: (product: IProduct) => void
 }
+
 const UpdateProduct = ({ onUpdate, products, categories }: IProps) => {
-    const { id } = useParams<{ id: string }>();
-    // const [product, setProducts] = useState<IProduct | undefined>(undefined);
-    useEffect(() => {
-        const concurren = products.find((pro) => pro._id === id);
-        // console.log(concurren);
-
-        if (concurren) {
-            // setProducts(concurren);
-            formRef.current?.setFieldsValue(concurren);
-        }
-
-    }, [id, products])
-
     const formRef = React.useRef<FormInstance>(null);
     const { Option } = Select;
     const navigate = useNavigate();
+
+    // Lấy ra id
+    const { id } = useParams<{ id: string }>();
+
+    useEffect(() => {
+        const concurren = products.find((pro) => pro._id === id);
+        if (concurren) {
+            formRef.current?.setFieldsValue(concurren);
+        }
+    }, [id, products])
+
     const onFinish = (values: any) => {
         const productUpdate = {
             ...values,
@@ -50,22 +52,16 @@ const UpdateProduct = ({ onUpdate, products, categories }: IProps) => {
         formRef.current?.setFieldsValue({ note: 'Hello world!', gender: 'male' });
     };
 
+    // k cần để ý
     const onGenderChange = (value: string) => {
         switch (value) {
             case 'male':
                 formRef.current?.setFieldsValue({ note: 'Hi, man!' });
                 break;
-            case 'female':
-                formRef.current?.setFieldsValue({ note: 'Hi, lady!' });
-                break;
-            case 'other':
-                formRef.current?.setFieldsValue({ note: 'Hi there!' });
-                break;
             default:
                 break;
         }
     };
-
     return (
         <div>
             <h1 className='text-center'>Update Products</h1>
@@ -77,7 +73,7 @@ const UpdateProduct = ({ onUpdate, products, categories }: IProps) => {
                 initialValues={{ remember: true }}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
-                autoComplete="off"
+                autoComplete="on"
                 ref={formRef}
             >
                 <Form.Item name="categoryId" label="CategoryId" rules={[{ required: true }]}>
@@ -98,7 +94,7 @@ const UpdateProduct = ({ onUpdate, products, categories }: IProps) => {
                     name="name"
                     rules={[{ required: true, message: 'Please input your name products!' }]}
                 >
-                    <Input />
+                    <Input autoComplete="name" />
                 </Form.Item>
 
                 <Form.Item
@@ -106,12 +102,12 @@ const UpdateProduct = ({ onUpdate, products, categories }: IProps) => {
                     name="price"
                     rules={[{ required: true, message: 'Please input price!' }]}
                 >
-                    <Input />
+                    <Input autoComplete="price" />
                 </Form.Item>
 
                 <Form.Item label="Description" name="description"
                     rules={[{ required: true, message: 'Please input description!' }]}>
-                    <TextArea rows={4} />
+                    <TextArea rows={4} autoComplete="description" />
                 </Form.Item>
 
                 <Form.Item
@@ -119,7 +115,7 @@ const UpdateProduct = ({ onUpdate, products, categories }: IProps) => {
                     name="image"
                     rules={[{ required: true, message: 'Please input image!' }]}
                 >
-                    <Input />
+                    <Input autoComplete="image" />
                 </Form.Item>
 
                 <Form.Item wrapperCol={{ offset: 8, span: 16 }}>

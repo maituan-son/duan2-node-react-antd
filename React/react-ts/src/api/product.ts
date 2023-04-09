@@ -1,8 +1,8 @@
 import { instance } from "./instance"
 import { IProduct } from "../types/products";
 
-export const getAllProduct = () => {
-    return instance.get("/products");
+export const getAllProduct = (keywords: string) => {
+    return instance.get(`/products?_keywords= ${keywords}`);
 }
 
 export const getOneProduct = (id: string) => {

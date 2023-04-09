@@ -4,20 +4,19 @@ import { Input, Space } from 'antd';
 
 const { Search } = Input;
 
-const suffix = (
-    <AudioOutlined
-        style={{
-            fontSize: 16,
-            color: '#1890ff',
-        }}
-    />
-);
 
-const onSearch = (value: string) => console.log(value);
+const SearchForm = (props: any) => {
 
+    const onSearch = (value: string) => console.log(value);
 
-const SearchForm = () => {
-
+    const suffix = (
+        <AudioOutlined
+            style={{
+                fontSize: 16,
+                color: '#1890ff',
+            }}
+        />
+    );
     return (
         <div className='mt-5'>
             <Search
