@@ -23,9 +23,9 @@ const SearchForm = (props: any) => {
                 placeholder="input search text"
                 enterButton="Search"
                 size="large"
-                suffix={suffix}
+                suffix={suffix} 
                 onSearch={onSearch}
-            />
+            /> 
         </div>
     )
 }

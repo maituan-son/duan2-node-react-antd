@@ -1,4 +1,4 @@
-// components
+// components  
 import React, { useEffect } from 'react'
 import { ICategory } from '../../../types/category'
 import { useParams, useNavigate } from 'react-router-dom'
@@ -47,19 +47,6 @@ const UpdateCategory = ({ categories, onUpdate, products }: Props) => {
     const onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo);
     };
-
-
-    // const onGenderChange = (value: string) => {
-    //     switch (value) {
-    //         case 'male':
-    //             form.setFieldsValue({ note: 'Hi, man!' });
-    //             break;
-    //         case 'other':
-    //             form.setFieldsValue({ note: 'Hi there!' });
-    //             break;
-    //         default:
-    //     }
-    // };
     return (
         <div>
             <h1 className='text-center'>Update Category</h1>
@@ -74,19 +61,6 @@ const UpdateCategory = ({ categories, onUpdate, products }: Props) => {
                 autoComplete="on"
                 ref={formRef}
             >
-                {/* <Form.Item name="products" label="Products" rules={[{ required: true }]}>
-                    <Select
-                        placeholder="Select a option and change input text above"
-                        onChange={onGenderChange}
-                        allowClear
-                    >
-                        {products.map((pro, index) => {
-                            return (
-                                <Option key={index} value={pro._id}>{pro.name}</Option>
-                            )
-                        })}
-                    </Select>
-                </Form.Item> */}
                 <Form.Item
                     label="Category name"
                     name="name"

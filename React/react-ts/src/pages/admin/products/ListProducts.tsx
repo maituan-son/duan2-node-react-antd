@@ -115,9 +115,9 @@ const ListProducts = ({ products, onRemove, categories, onKeyWords }: Props) => 
             <h1>Danh sách sản phẩm</h1>
             <Space direction="vertical">
                 <Search
-                    placeholder="input search text"
+                    placeholder="Nhập tên sản phẩm"
                     allowClear
-                    enterButton="Search"
+                    enterButton="Tìm kiếm"
                     size="large"
                     onSearch={onSearch}
                     onChange={onHandleChange}

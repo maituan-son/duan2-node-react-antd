@@ -1,4 +1,4 @@
-// components
+// components  
 import { ICategory } from '../../../types/category'
 import { Button, Image, message, Popconfirm } from 'antd';
 import { Space, Table, Tag } from 'antd';
@@ -70,9 +70,9 @@ const ListCategory = ({ categories, products, onRemove, onKeyWords }: Props) => 
             <h1>Danh sách loại</h1>
             <Space direction="vertical">
                 <Search
-                    placeholder="input search text"
-                    allowClear
-                    enterButton="Search"
+                  placeholder="Nhập tên sản phẩm"
+                  allowClear
+                  enterButton="Tìm kiếm"
                     size="large"
                     onSearch={onSearch}
                     onChange={onHandleChange}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from "react-router-dom";
+import { Form, useParams } from "react-router-dom";
 import { IProduct } from '../../types/products';
-import { Button } from 'antd';
+import { Button, Input, Select, Space } from 'antd';
 
 type Props = {
     products: IProduct[]
@@ -18,6 +18,10 @@ const ProductDetail = ({ products }: Props) => {
         setproduct(concurren);
 
     }, [products]);
+    
+const handleChange = (value: string) => {
+    console.log(`selected ${value}`);
+  };
 
     return (
         <div className="container">
@@ -35,12 +39,28 @@ const ProductDetail = ({ products }: Props) => {
                             <span><del>{Number("20000000").toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</del></span>
                         </div>
                         <br />
+                        <Space wrap>
+                                <Select
+                                defaultValue="lucy"
+                                style={{ width: 120 }}
+                                onChange={handleChange}
+                                options={[
+                                    { value: '1kg', label: '1kg' },
+                                    { value: '2kg', label: '2kg' },
+                                    { value: '10kg', label: '10kg' },
+                                    { value: 'disabled', label: 'Disabled', disabled: true },
+                                ]}
+                                />
+                        </Space>
+
+
                         <div className=''> Mô tả:  
                             {product?.description}
                         </div>
                         <br />
                         <div>
                         <Button type="primary"  className="antd-space">Mua ngay</Button>
+                        
                         </div>
                     </div>
                 </div>

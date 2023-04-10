@@ -9,7 +9,7 @@ import {
   UserOutlined,
   VideoCameraOutlined,
 } from '@ant-design/icons';
-import type { MenuProps } from 'antd';
+import { Button, MenuProps, Space } from 'antd';
 
 import Nav from '../admin/Nav' 
 import { LaptopOutlined, NotificationOutlined, } from '@ant-design/icons' ;
@@ -18,28 +18,19 @@ import { Outlet } from "react-router-dom";
 const { Header, Content, Footer, Sider } = Layout;
 import { AntDesignOutlined, } from '@ant-design/icons';
 import { Avatar, Divider, Tooltip } from 'antd';
-
-// const items1: MenuProps['items'] = [
-//   {
-//     key: 'dashboard',
-//     label: (<Avatar.Group>
-//       <Avatar src="https://res.cloudinary.com/fashsion-brand/image/upload/v1677003861/portfolio/jqfcw2bdpy9vcg5mciyr.jpg" />
-//     </Avatar.Group>),
-//     children: [
-//       {
-//         key: `ListProduct`,
-//         label: (<a href='#'>Thông tin</a>),
-
-//       },
-//       {
-//         key: `ListProduct`,
-//         label: (<a href='/'>Thoát</a>),
-
-//       },
-//     ]
-//   }]
-
 const items2 = [
+  {
+    key: `logout`,
+    label: (<a href='/'>
+       <Space direction="vertical" style={{ width: '100%' }}>
+    <Button type="primary" block>
+      Thoát
+    </Button>
+        </Space>
+
+    </a>), 
+
+  },
   {
     key: 'dashboard',
     label: (<Avatar.Group>
@@ -51,17 +42,19 @@ const items2 = [
         label: (<a href='#'>Thông tin</a>),
 
       },
-      {
-        key: `logout`,
-        label: (<a href='/'>Thoát</a>), 
-
-      },
+    
     ]
   },
   {
     key: 'dashboard',
     icon: React.createElement(NotificationOutlined), 
-    label: (<a href='/admin'>Dashboard</a>),
+    label: (<a href='/admin'>
+          <Space direction="vertical" style={{ width: '100%' }}>
+    <Button type="primary" block>
+      Dashboard
+    </Button>
+        </Space>
+    </a>),
   },
   {
     key: 'products',
@@ -70,12 +63,21 @@ const items2 = [
     children: [
       {
         key: `ListProduct`,
-        label: (<a href='/admin/products'>ListProduct</a>),
+        label: (<a href='/admin/products'>  <Space direction="vertical" style={{ width: '100%' }}>
+        <Button type="primary" block>
+        ListProduct
+        </Button>
+            </Space></a>),
 
       },
       {
         key: `AddProduct`, 
-        label: (<a href='/admin/products/add'>AddProduct</a>),
+        label: (<a href='/admin/products/add'>  <Space direction="vertical" style={{ width: '100%' }}>
+        <Button type="primary" block>
+        AddProduct
+
+        </Button>
+            </Space></a>),
       }
 
     ]
@@ -87,12 +89,20 @@ const items2 = [
     children: [
       {
         key: `ListCategory`,
-        label: (<a href='/admin/categories'>ListCategory</a>), 
+        label: (<a href='/admin/categories'>  <Space direction="vertical" style={{ width: '100%' }}>
+        <Button type="primary" block>
+        ListCategory
+        </Button>
+            </Space></a>), 
 
       },
       {
         key: `AddCategory`,
-        label: (<a href='/admin/categories/add'>AddCategory</a>),
+        label: (<a href='/admin/categories/add'>  <Space direction="vertical" style={{ width: '100%' }}>
+        <Button type="primary" block>
+        AddCategory
+        </Button>
+            </Space></a>),
       }
 
     ]
@@ -108,31 +118,7 @@ function AdminLayout() {
   } = theme.useToken();
   return (
     <div>
-      {/* <Layout>
-       <Header className="header">
-          <div className="logo" />
-          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items1} />
-        </Header> 
-        <Content style={{ padding: '0 50px' }}>
 
-          <Layout style={{ padding: '24px 0', background: colorBgContainer }}>
-            <Sider style={{ background: colorBgContainer }} width={200}>
-              <Menu
-                mode="inline"
-                defaultSelectedKeys={['1']}
-                defaultOpenKeys={['sub1']}
-                style={{ height: '100%' }}
-                items={items2}
-              />
-            </Sider>
-            <Content style={{ padding: '0 24px', minHeight: 280 }}><main><Outlet /></main></Content>
-          </Layout>
-        </Content>
-      </Layout> */}
-      {/* <Header className="header">
-        <div className="logo" />
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']} items={items1} />
-      </Header> */}
       <Layout hasSider>
         <Sider
           style={{

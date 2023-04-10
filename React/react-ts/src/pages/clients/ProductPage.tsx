@@ -31,8 +31,8 @@ const ProductPage = ({ products, categories }: Props) => {
         <div>
             {slideshowproduct()}
             <Search
-                placeholder="input search text"
-                enterButton="Search"
+                placeholder="Nhập tên sản phẩm"
+                enterButton="Tìm kiếm"
                 size="large"
                 suffix={suffix}
                 onSearch={onSearch}
@@ -44,7 +44,7 @@ const ProductPage = ({ products, categories }: Props) => {
                             <Col key={index} span={6} className="col-md-2  shadow-hover border  text-center rounded-start">
                                 <div style={style} className="gutter-row ">
                                     <a href='' className=' pt-3 link-underline link-underline-opacity-0 bg-white'>
-                                        <img  className='border  bg-secondary-subtle p-3 rounded-circle' src={cate.image}  width={100} />
+                                        {/* <img  className='border  bg-secondary-subtle p-3 rounded-circle' src={cate.image}  width={100} /> */}
                                     </a>
                                     <a href='' className=' p-3 link-underline link-underline-opacity-0 text-center '>
                                         <h5 className='text-black'>{cate.name}</h5>

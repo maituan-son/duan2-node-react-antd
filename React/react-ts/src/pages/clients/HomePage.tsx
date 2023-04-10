@@ -35,8 +35,8 @@ const HomePage = ({ products }: Props) => {
         <div>
             {slideshow()}
             <Search
-                placeholder="input search text" 
-                enterButton="Search" 
+                 placeholder="Nhập tên sản phẩm"
+                 enterButton="Tìm kiếm"
                 size="large"
                 suffix={suffix} 
                 onSearch={onSearch} 

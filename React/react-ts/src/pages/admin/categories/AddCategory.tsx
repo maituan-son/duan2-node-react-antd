@@ -1,6 +1,6 @@
-// components
-import { ICategory } from '../../../types/category'
-import { useNavigate } from 'react-router-dom'
+// components   
+import { ICategory } from '../../../types/category' 
+import { useNavigate } from 'react-router-dom' 
 import { Button, Form, Input, Select } from 'antd';
 import { IProduct } from '../../../types/products';
 
@@ -26,20 +26,9 @@ const AddCategory = ({ onAdd, products }: Props) => {
     const onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo);
     };
-
-
-    // const onGenderChange = (value: string) => {
-    //     switch (value) {
-    //         case 'male':
-    //             form.setFieldsValue({ note: 'Hi, man!' });
-    //             break;
-    //         default:
-    //     }
-    // };
-
     return (
         <div>
-            <h1 className='text-center'>Add new Category</h1>
+            <h1 className='text-center'>Thêm loại</h1>
             <Form
                 name="control-hooks"
                 labelCol={{ span: 3 }}
@@ -50,19 +39,6 @@ const AddCategory = ({ onAdd, products }: Props) => {
                 onFinishFailed={onFinishFailed}
                 autoComplete="on"
             >
-                {/* <Form.Item name="products" label="Products" rules={[{ required: true }]}>
-                    <Select
-                        placeholder="Select a option and change input text above"
-                        onChange={onGenderChange}
-                        allowClear
-                    >
-                        {products.map((pro, index) => {
-                            return (
-                                <Option key={index} value={pro._id}>{pro.name}</Option>
-                            )
-                        })}
-                    </Select>
-                </Form.Item> */}
                 <Form.Item
                     label="Category name"
                     name="name"

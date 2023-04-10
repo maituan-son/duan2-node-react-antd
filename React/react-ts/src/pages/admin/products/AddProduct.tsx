@@ -1,5 +1,5 @@
 // components
-import React from 'react'
+import React from 'react'  
 import { IProduct } from '../../../types/products';
 import { useNavigate } from 'react-router-dom';
 import { Button, Form, Input, Select } from 'antd';
@@ -50,7 +50,7 @@ const AddProduct = ({ onAdd, categories }: Props) => {
     };
     return (
         <div>
-            <h1 className='text-center'>Add new Products</h1>
+            <h1 className='text-center'>Thêm Sản Phẩm</h1>
             <Form
                 name="control-ref"
                 labelCol={{ span: 2 }}
