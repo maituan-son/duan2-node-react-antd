@@ -8,4 +8,4 @@ router.put("/categories/:id", checkPermission, update);
 router.delete("/categories/:id", checkPermission, remove);
 router.post("/categories", checkPermission, create);
 
-export default router;
+export default router; 

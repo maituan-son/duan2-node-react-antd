@@ -17,9 +17,9 @@ export const getAll = async (req, res) => {
     sort: { [_sort]: _order === "desc" ? -1 : 1 },
   };
   try {
-    const searchData = (products) => {
+    const searchData = (products) => { 
       return products?.docs?.filter((item) =>
-        item.name.toLowerCase().includes(_keywords)
+        item.name.toLowerCase().includes(_keywords) 
       );
     };
     const products = await Product.paginate({}, options);
@@ -47,7 +47,7 @@ export const getAll = async (req, res) => {
 export const get = async (req, res) => {
   try {
     const products = await Product.findById(req.params.id).populate({
-      path: "categoryId",
+      path: "categoryId", 
       // select: "name",
     });
     if (!products) {

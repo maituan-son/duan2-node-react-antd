@@ -14,13 +14,13 @@ const slideshow = () => {
         <div>
             <Carousel autoplay>
                 <div>
-                    <h3 style={contentStyle}> <img src="https://images.fpt.shop/unsafe/fit-in/800x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/4/1/638159447645423123_F-H1_800x300.png" className="d-block w-100" alt="..." /></h3>
+                    <h3 style={contentStyle}> <img src="https://www.thucphamsachhd.com/uploads/files/2017/11/07/nha_hang_BBQ.png" className="d-block w-100" alt="..." /></h3>
                 </div>
                 <div>
-                    <h3 style={contentStyle}>  <img src="https://images.fpt.shop/unsafe/fit-in/800x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/4/1/638159356547375957_F-H1_800x300.png" className="d-block w-100" alt="..." /></h3>
+                    <h3 style={contentStyle}>  <img src="https://theme.hstatic.net/1000282430/1000544102/14/banner-slider-3.jpg?v=2346" className="d-block w-100" alt="..." /></h3>
                 </div>
                 <div>
-                    <h3 style={contentStyle}> <img src="https://images.fpt.shop/unsafe/fit-in/800x300/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/3/31/638159006091431304_F-H1_800x300.png" className="d-block w-100" alt="..." /></h3>
+                    <h3 style={contentStyle}> <img src="https://theme.hstatic.net/1000282430/1000544102/14/banner-slider-2.jpg?v=2346" className="d-block w-100" alt="..." /></h3>
                 </div>
 
             </Carousel>

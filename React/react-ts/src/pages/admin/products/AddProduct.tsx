@@ -114,12 +114,12 @@ const AddProduct = ({ onAdd, categories }: Props) => {
                     </Button>
                     <Button type="link" htmlType="button" onClick={onFill}>
                         Fill form
-                    </Button>
+                    </Button> 
 
-                </Form.Item>
+                </Form.Item> 
             </Form>
         </div >
     )
 }
 
-export default AddProduct
+export default AddProduct  

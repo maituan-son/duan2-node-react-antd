@@ -19,7 +19,7 @@ const SearchForm = (props: any) => {
     );
     return (
         <div className='mt-5'>
-            <Search
+            <Search 
                 placeholder="input search text"
                 enterButton="Search"
                 size="large"

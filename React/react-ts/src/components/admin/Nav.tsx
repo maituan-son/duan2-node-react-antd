@@ -26,13 +26,13 @@ const Nav = () => {
                                 </ul>
                             </li>
                             <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> 
                                     Categories
-                                </a>
+                                </a> 
                                 <ul className="dropdown-menu">
-                                    <li><a className="dropdown-item" href="/admin/categories">ListCategories</a></li>
-                                    <li><a className="dropdown-item" href="/admin/categories/add">Add Categories</a></li>
-                                    <li><hr className="dropdown-divider" /></li>
+                                    <li><a className="dropdown-item" href="/admin/categories">ListCategories</a></li> 
+                                    <li><a className="dropdown-item" href="/admin/categories/add">Add Categories</a></li> 
+                                    <li><hr className="dropdown-divider" /></li> 
                                     <li><a className="dropdown-item" href="#">Something else here</a></li>
                                 </ul>
                             </li>

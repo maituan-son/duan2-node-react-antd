@@ -11,8 +11,8 @@ import {
 } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 
-import Nav from '../admin/Nav'
-import { LaptopOutlined, NotificationOutlined, } from '@ant-design/icons';
+import Nav from '../admin/Nav' 
+import { LaptopOutlined, NotificationOutlined, } from '@ant-design/icons' ;
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import { Outlet } from "react-router-dom";
 const { Header, Content, Footer, Sider } = Layout;
@@ -43,7 +43,7 @@ const items2 = [
   {
     key: 'dashboard',
     label: (<Avatar.Group>
-      <Avatar className='m-5' src="https://res.cloudinary.com/fashsion-brand/image/upload/v1677003861/portfolio/jqfcw2bdpy9vcg5mciyr.jpg" />
+      <Avatar className='m-5' src="#" />
     </Avatar.Group>),
     children: [
       {
@@ -53,14 +53,14 @@ const items2 = [
       },
       {
         key: `logout`,
-        label: (<a href='/'>Thoát</a>),
+        label: (<a href='/'>Thoát</a>), 
 
       },
     ]
   },
   {
     key: 'dashboard',
-    icon: React.createElement(NotificationOutlined),
+    icon: React.createElement(NotificationOutlined), 
     label: (<a href='/admin'>Dashboard</a>),
   },
   {
@@ -74,7 +74,7 @@ const items2 = [
 
       },
       {
-        key: `AddProduct`,
+        key: `AddProduct`, 
         label: (<a href='/admin/products/add'>AddProduct</a>),
       }
 
@@ -87,7 +87,7 @@ const items2 = [
     children: [
       {
         key: `ListCategory`,
-        label: (<a href='/admin/categories'>ListCategory</a>),
+        label: (<a href='/admin/categories'>ListCategory</a>), 
 
       },
       {
@@ -138,7 +138,7 @@ function AdminLayout() {
           style={{
             overflow: 'auto',
             height: '100vh',
-            position: 'fixed',
+            position: 'fixed', 
             left: 0,
             top: 0,
             bottom: 0,

@@ -20,7 +20,9 @@ const Signup = ({ onSignup }: Props) => {
     return (
 
         <div>
-            <h1 className='text-center'>Signup</h1>
+            <h1 className='text-center'>
+                Đăng ký
+            </h1>
             <Form
                 name="register"
                 labelCol={{ span: 4 }}

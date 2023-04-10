@@ -44,7 +44,7 @@ const ProductPage = ({ products, categories }: Props) => {
                             <Col key={index} span={6} className="col-md-2  shadow-hover border  text-center rounded-start">
                                 <div style={style} className="gutter-row ">
                                     <a href='' className=' pt-3 link-underline link-underline-opacity-0 bg-white'>
-                                        <img width={100} className='border  bg-secondary-subtle p-3 rounded-circle' src={cate.image} alt="" />
+                                        <img  className='border  bg-secondary-subtle p-3 rounded-circle' src={cate.image}  width={100} />
                                     </a>
                                     <a href='' className=' p-3 link-underline link-underline-opacity-0 text-center '>
                                         <h5 className='text-black'>{cate.name}</h5>
@@ -55,7 +55,7 @@ const ProductPage = ({ products, categories }: Props) => {
                     })}
                 </Row>
                 <div className='my-3'>
-                    <img src="https://images.fpt.shop/unsafe/fit-in/1200x100/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2023/4/1/638159449604337600_H7.png" alt="" />
+            <img src="https://theme.hstatic.net/1000282430/1000544102/14/banner-slider-3.jpg?v=2346" className="d-block w-100" alt="..." />
                 </div>
                 <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32, }}>
                     {products.map((pro, index) => {
@@ -63,7 +63,7 @@ const ProductPage = ({ products, categories }: Props) => {
                             <Col key={index} span={6}>
                                 <div style={style} className="gutter-row  shadow-hover">
                                     <div className='text-center'>
-                                        <a href={"/products/" + pro._id}><img src={pro.image} alt="" /></a>
+                                        <a href={"/products/" + pro._id}><img src={pro.image} width={300} /></a>
                                     </div>
                                     <div className='shadow-sm p-3'>
                                         <a className='link-underline link-underline-opacity-0 text-black' href={"/products/" + pro._id}><h3>{pro.name}</h3></a>

@@ -19,7 +19,9 @@ const Signin = ({ onSignin }: Props) => {
     };
     return (
         <div>
-            <h1 className='text-center'>Signin</h1>
+            <h1 className='text-center'>
+                Đăng nhập
+            </h1>
             <Form
                 name="normal_login"
                 className="login-form"
@@ -34,7 +36,7 @@ const Signin = ({ onSignin }: Props) => {
                     name="email"
                     rules={[{
                         type: 'email',
-                        message: 'The input is not valid E-mail!',
+                        message: '',
                     },
                     {
                         required: true,
@@ -51,12 +53,12 @@ const Signin = ({ onSignin }: Props) => {
                     rules={[
                         {
                             required: true,
-                            message: 'Please input your Password!',
+                            message: 'Please input your Password!', 
 
                         },
                         {
                             min: 6,
-                            message: 'Vui lòng nhập lớn hơn 6 ký tự!',
+                            message: 'Vui lòng nhập lớn hơn 6 ký tự!', 
                         },
                     ]}
                 >
@@ -80,7 +82,7 @@ const Signin = ({ onSignin }: Props) => {
                     <Button type="primary" htmlType="submit" className="login-form-button">
                         Log in
                     </Button>
-                    Or <a href="/signup">register now!</a>
+                    Or <a href="/signup">register now!</a> 
                 </Form.Item>
             </Form>
         </div>

@@ -22,8 +22,8 @@ app.get("/search", (req, res) => {
 
 // connect
 mongoose
-  .connect("mongodb://localhost:27017/assignment")
+  .connect("mongodb://127.0.0.1/we17305") 
   .then(() => console.log("Db is connecting"))
-  .catch(() => console.log("Failed connect"));
+  .catch(() => console.log("Failed connect")); // eslint-disable-line no-console
 
 export const viteNodeApp = app;

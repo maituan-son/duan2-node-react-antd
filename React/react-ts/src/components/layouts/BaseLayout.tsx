@@ -24,7 +24,7 @@ const BaseLayout = () => {
     items = [
       {
         key: '#',
-        label: (<a href='#'>Ngọc</a>),
+        label: (<a href='#'>Sơn</a>),
       },
       {
         key: 'home',
@@ -39,11 +39,11 @@ const BaseLayout = () => {
       {
         key: 'User',
         icon: <UserOutlined />,
-        label: (<a href='/'>User</a>),
+        label: (<a href='/'>Tài khoản</a>),
         children: [
           {
             key: `logout`,
-            label: (<a href='/' onClick={() => { localStorage.removeItem("accessToken"), localStorage.removeItem("user") }}>logout</a>),
+            label: (<a href='/' onClick={() => { localStorage.removeItem("accessToken"), localStorage.removeItem("user") }}></a>),
           },
           {
             key: `dashboard`,
@@ -54,45 +54,12 @@ const BaseLayout = () => {
       },
     ]
   }
-  // else if (JSON.parse(localStorage.getItem("user")!) === "admin") {
-  //   items = [
-  //     {
-  //       key: '#',
-  //       label: (<a href='#'>Ngọc</a>),
-  //     },
-  //     {
-  //       key: 'home',
-  //       icon: <HomeOutlined />,
-  //       label: (<a href='/'>Trang chủ</a>),
-  //     },
-  //     {
-  //       key: 'products',
-  //       icon: React.createElement(NotificationOutlined),
-  //       label: (<a href='/products'>Sản phẩm</a>),
-  //     },
-  //     {
-  //       key: 'User',
-  //       icon: <UserOutlined />,
-  //       label: (<a href='/'>User</a>),
-  //       children: [
-  //         {
-  //           key: `logout`,
-  //           label: (<a href='/' onClick={() => { localStorage.removeItem("accessToken"), localStorage.removeItem("user") }}>logout</a>),
-  //         },
-  //         {
-  //           key: `dashboard`,
-  //           label: (<a href='/admin'>Trang quản trị</a>),
-  //         }
 
-  //       ]
-  //     },
-  //   ]
-  // }
   else {
     items = [
       {
         key: 'dashboard',
-        label: (<a href='/admin'>Ngọc</a>),
+        label: (<a href='/admin'>son</a>),
       },
       {
         key: 'home',
@@ -142,7 +109,7 @@ const BaseLayout = () => {
             >
               <main><Outlet /></main>
             </Content>
-            <Footer style={{ textAlign: 'center' }}>Đào Minh Ngọc sdt: 0869827432</Footer>
+            <Footer style={{ textAlign: 'center' }}>Mai tuấn Sơn </Footer>
           </Layout>
         </Layout>
       </Layout>

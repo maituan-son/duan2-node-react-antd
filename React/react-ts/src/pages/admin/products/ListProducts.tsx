@@ -15,25 +15,25 @@ import { Pagination } from 'antd';
 type Props = {
     categories: ICategory[],
     products: IProduct[],
-    onKeyWords: (keys: string) => void,
-    onRemove: (_id: string) => void
+    onKeyWords: (keys: string) => void, 
+    onRemove: (_id: string) => void 
 }
 
-const ListProducts = ({ products, onRemove, categories, onKeyWords }: Props) => {
-    // antd
+const ListProducts = ({ products, onRemove, categories, onKeyWords }: Props) => { 
+    // antd 
     const { Search } = Input;
     const suffix = (
         <AudioOutlined
             style={{
                 fontSize: 16,
-                color: '#1890ff',
+                color: '#1890ff', 
             }}
         />
     );
 
     // các hàm xử lý
     // hàm tìm kiếm
-    const onSearch = (value: string) => console.log(value);
+    const onSearch = (value: string) => console.log(value); 
     const onHandleChange = (e: any) => {
         e.preventDefault();
         onKeyWords(e.target.value.toLowerCase());
